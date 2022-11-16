@@ -12,9 +12,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        primary: "#00FFE1",
-        secondary: "#898989",
-        tertiary: "#28365f",
+        primary: "#00c7b0",
+        secondary: "#fff4cb",
+        tertiary: "#009483",
         deep: "#2b55cc",
         darktxt: "#848db3",
         darkBlue: "#151a33",
@@ -27,5 +27,8 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/forms")],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };
