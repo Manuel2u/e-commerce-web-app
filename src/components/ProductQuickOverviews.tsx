@@ -34,8 +34,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function ProductQuickOverviews() {
-  const [open, setOpen] = useState(false);
+type Props = {
+  open: boolean;
+  setOpen: any;
+};
+
+export default function ProductQuickOverviews({ open, setOpen }: Props) {
   const [selectedColor, setSelectedColor] = useState(product.colors[0]);
   const [selectedSize, setSelectedSize] = useState(product.sizes[2]);
 

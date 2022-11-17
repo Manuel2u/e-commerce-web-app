@@ -1,5 +1,5 @@
-import React from "react";
-// import ProductQuickOverviews from "./ProductQuickOverviews";
+import React, { useState } from "react";
+import ProductQuickOverviews from "./ProductQuickOverviews";
 
 const products = [
   {
@@ -46,8 +46,9 @@ const products = [
 ];
 
 export default function Dashboard() {
+  const [openModal, setOpenModal] = useState(false);
   const handleClick = () => {
-    console.log("clicked");
+    setOpenModal(true);
   };
 
   return (
@@ -85,6 +86,7 @@ export default function Dashboard() {
           ))}
         </div>
       </div>
+      <ProductQuickOverviews open={openModal} setOpen={setOpenModal} />
     </div>
   );
 }

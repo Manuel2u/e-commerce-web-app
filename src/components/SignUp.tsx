@@ -237,8 +237,8 @@ export default function SignUp() {
           <div className="absolute inset-0 flex-1 flex items-center justify-center">
             <img
               className="object-cover h-[50%] w-[50%]"
-              src="https://hubtel.com/wp-content/themes/hubtel/dist/images/new-jumbotron.png"
-              alt=""
+              // src="https://hubtel.com/wp-content/themes/hubtel/dist/images/new-jumbotron.png"
+              alt="Design Logo"
             />
           </div>
         </div>

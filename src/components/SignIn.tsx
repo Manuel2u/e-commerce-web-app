@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../userContext/userContext";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { createUser } = UserAuth();
+  const { signIn } = UserAuth();
+  const navigate = useNavigate();
 
   const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -16,19 +17,20 @@ export default function SignIn() {
     setPassword(value);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createUser(email, password);
+    try {
+      await signIn(email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
-          <img
-            className="mx-auto h-12 w-auto"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-            alt="Your Company"
-          />
+          <img className="mx-auto h-12 w-auto" src="" alt="Company Logo" />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
             Sign in to your account
           </h2>
