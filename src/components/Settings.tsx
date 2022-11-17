@@ -71,7 +71,7 @@ export default function Settings() {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-50 text-orange-600 hover:bg-white"
+                      ? "bg-gray-50 text-primary hover:bg-white"
                       : "text-gray-900 hover:text-gray-900 hover:bg-gray-50",
                     "group rounded-md px-3 py-2 flex items-center text-sm font-medium"
                   )}
@@ -80,7 +80,7 @@ export default function Settings() {
                   <item.icon
                     className={classNames(
                       item.current
-                        ? "text-orange-500"
+                        ? "text-primary"
                         : "text-gray-400 group-hover:text-gray-500",
                       "flex-shrink-0 -ml-1 mr-3 h-6 w-6"
                     )}
@@ -290,7 +290,7 @@ export default function Settings() {
                                   <span
                                     className={classNames(
                                       checked
-                                        ? "bg-orange-500 border-transparent"
+                                        ? "bg-primary border-transparent"
                                         : "bg-white border-gray-300",
                                       active
                                         ? "ring-2 ring-offset-2 ring-gray-900"
@@ -325,7 +325,7 @@ export default function Settings() {
                                   <span
                                     className={
                                       checked
-                                        ? "text-orange-700"
+                                        ? "text-tertiary"
                                         : "text-gray-500"
                                     }
                                   >
@@ -335,9 +335,7 @@ export default function Settings() {
                                 <RadioGroup.Description
                                   as="span"
                                   className={classNames(
-                                    checked
-                                      ? "text-orange-700"
-                                      : "text-gray-500",
+                                    checked ? "text-tertiary" : "text-gray-500",
                                     "ml-6 pl-1 text-sm md:ml-0 md:pl-0 md:text-right"
                                   )}
                                 >
@@ -355,9 +353,7 @@ export default function Settings() {
                         checked={annualBillingEnabled}
                         onChange={setAnnualBillingEnabled}
                         className={classNames(
-                          annualBillingEnabled
-                            ? "bg-orange-500"
-                            : "bg-gray-200",
+                          annualBillingEnabled ? "bg-primary" : "bg-gray-200",
                           "relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-gray-900 focus:ring-offset-2"
                         )}
                       >
@@ -457,7 +453,7 @@ export default function Settings() {
                                 <td className="whitespace-nowrap px-6 py-4 text-right text-sm font-medium">
                                   <a
                                     href={payment.href}
-                                    className="text-orange-600 hover:text-orange-900"
+                                    className="text-primary hover:text-tertiary"
                                   >
                                     View receipt
                                   </a>

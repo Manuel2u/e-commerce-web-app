@@ -7,6 +7,8 @@ import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
 import Profile from "./components/Profile";
 import Settings from "./components/Settings";
+import Footer from "./components/Footer";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
 function App() {
   return (
@@ -18,11 +20,19 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={
+                <ProtectedRoutes>
+                  <Profile />
+                </ProtectedRoutes>
+              }
+            />
             <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
+        <Footer />
       </Router>
     </div>
   );
