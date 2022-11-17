@@ -45,7 +45,9 @@ export default function SignUp() {
 
   return (
     <>
-      {error && <ErrorComponent />}
+      {error && (
+        <ErrorComponent message={error} clearError={() => setError("")} />
+      )}
       <div className="flex min-h-full flex-1">
         <div className="flex flex-1 flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
           <div className="ml-20 mb-14 w-full max-w-sm lg:w-96">

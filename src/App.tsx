@@ -5,6 +5,8 @@ import SignUp from "./components/SignUp";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
 import NotFound from "./components/NotFound";
+import Profile from "./components/Profile";
+import Settings from "./components/Settings";
 
 function App() {
   return (
@@ -16,6 +18,8 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/settings" element={<Settings />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>

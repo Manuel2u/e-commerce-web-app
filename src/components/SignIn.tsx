@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserAuth } from "../userContext/userContext";
+import ErrorComponent from "./ErrorComponent";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const { signIn } = UserAuth();
   const navigate = useNavigate();
 
@@ -22,12 +24,20 @@ export default function SignIn() {
     try {
       await signIn(email, password);
       navigate("/");
-    } catch (error) {
+    } catch (error: any) {
       console.log(error);
+      if (error.code === "auth/wrong-password") {
+        setError("Wrong password");
+      } else {
+        setError(error.message);
+      }
     }
   };
   return (
     <>
+      {error && (
+        <ErrorComponent message={error} clearError={() => setError("")} />
+      )}
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img className="mx-auto h-12 w-auto" src="" alt="Company Logo" />

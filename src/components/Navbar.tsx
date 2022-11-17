@@ -1,7 +1,13 @@
 import React from "react";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import {
+  Bars3Icon,
+  BellIcon,
+  XMarkIcon,
+  MagnifyingGlassIcon,
+  ShoppingBagIcon,
+} from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
 import { UserAuth } from "../userContext/userContext";
 
@@ -61,25 +67,59 @@ export default function Navbar() {
                     Home
                   </Link>
                   <Link
-                    to="/about"
+                    to="/men"
                     className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                   >
-                    About
+                    Men
                   </Link>
                   <Link
-                    to="/contact"
+                    to="/women"
                     className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                   >
-                    Contact
+                    Women
+                  </Link>
+                  <Link
+                    to="/store"
+                    className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
+                  >
+                    Store
                   </Link>
                 </div>
               </div>
               {!user ? (
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  {/* Search */}
+                  <div className="flex lg:ml-6">
+                    <Link
+                      to="#"
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Search</span>
+                      <MagnifyingGlassIcon
+                        className="h-6 w-6"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </div>
+
+                  {/* Cart */}
+                  <div className="ml-4 flow-root lg:ml-6">
+                    <Link to="#" className="group -m-2 flex items-center p-2">
+                      <ShoppingBagIcon
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                        0
+                      </span>
+                      <span className="sr-only">items in cart, view bag</span>
+                    </Link>
+                  </div>
+
                   <Link to="/signin">
                     <button
                       type="button"
-                      className="h-10 w-24 bg-primary hover:text-primary flex justify-around my-10  py-2 mt-10 border-2 text-white transition-colors duration-500  border-gray-300 hover:bg-white rounded-lg"
+                      className="h-10 w-24 bg-primary ml-6 hover:text-primary flex justify-around my-10  py-[6px] mt-10 border-2 text-white transition-colors duration-500  border-gray-300 hover:bg-white rounded-lg"
                     >
                       Sign In
                     </button>
@@ -87,7 +127,7 @@ export default function Navbar() {
                   <Link to="/signup">
                     <button
                       type="button"
-                      className="h-10 w-24 bg-primary hover:text-primary flex justify-around mx-5 my-10  py-2 mt-10 border-2 text-white transition-colors duration-500  border-gray-300 hover:bg-white rounded-lg"
+                      className="h-10 w-24 bg-primary hover:text-primary flex justify-around mx-5 my-10  py-[6px] mt-10 border-2 text-white transition-colors duration-500  border-gray-300 hover:bg-white rounded-lg"
                     >
                       Sign Up
                     </button>
@@ -95,9 +135,35 @@ export default function Navbar() {
                 </div>
               ) : (
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  <div className="flex lg:ml-6">
+                    <Link
+                      to="#"
+                      className="p-2 text-gray-400 hover:text-gray-500"
+                    >
+                      <span className="sr-only">Search</span>
+                      <MagnifyingGlassIcon
+                        className="h-6 w-6"
+                        aria-hidden="true"
+                      />
+                    </Link>
+                  </div>
+
+                  {/* Cart */}
+                  <div className="ml-4 flow-root lg:ml-6">
+                    <Link to="#" className="group -m-2 flex items-center p-2">
+                      <ShoppingBagIcon
+                        className="h-6 w-6 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
+                        aria-hidden="true"
+                      />
+                      <span className="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
+                        0
+                      </span>
+                      <span className="sr-only">items in cart, view bag</span>
+                    </Link>
+                  </div>
                   <button
                     type="button"
-                    className="rounded-full bg-white p-1 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="rounded-full bg-white p-1 ml-6 text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span className="sr-only">View notifications</span>
                     <BellIcon className="h-6 w-6" aria-hidden="true" />
@@ -106,10 +172,10 @@ export default function Navbar() {
                   {/* Profile dropdown */}
                   <Menu as="div" className="relative ml-3">
                     <div>
-                      <Menu.Button className="flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                      <Menu.Button className="flex ml-3 rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         <span className="sr-only">Open user menu</span>
                         <img
-                          className="h-8 w-8 rounded-full"
+                          className="h-8 w-8  rounded-full"
                           src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
                           alt=""
                         />
