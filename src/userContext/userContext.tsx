@@ -40,16 +40,22 @@ export const UserProvider = ({ children }: Props) => {
   const signOutUser = () => {
     return signOut(auth);
   };
-
+  console.log(user);
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (Currentuser) => {
+      if (Currentuser) {
+        setUser(Currentuser);
+        localStorage.setItem(
+          "accessToken",
+          JSON.stringify(Currentuser.getIdToken())
+        );
       } else {
         setUser(null);
       }
     });
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    };
   }, []);
 
   return (
@@ -61,6 +67,6 @@ export const UserProvider = ({ children }: Props) => {
   );
 };
 
-export const UserAuth = () => {
+export const useUserAuth = () => {
   return useContext<userContextType>(UserContext);
 };

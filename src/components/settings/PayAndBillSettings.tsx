@@ -12,11 +12,31 @@ import {
 import { QuestionMarkCircleIcon } from "@heroicons/react/20/solid";
 
 const subNavigation = [
-  { name: "Profile", href: "#", icon: UserCircleIcon, current: false },
-  { name: "Account", href: "#", icon: CogIcon, current: false },
-  { name: "Password", href: "#", icon: KeyIcon, current: false },
-  { name: "Notifications", href: "#", icon: BellIcon, current: false },
-  { name: "Plan & Billing", href: "#", icon: CreditCardIcon, current: true },
+  {
+    name: "Profile",
+    href: "/settings/profile",
+    icon: UserCircleIcon,
+    current: false,
+  },
+  { name: "Account", href: "/settings/account", icon: CogIcon, current: false },
+  {
+    name: "Password",
+    href: "/settings/password",
+    icon: KeyIcon,
+    current: false,
+  },
+  {
+    name: "Notifications",
+    href: "/settings/notify",
+    icon: BellIcon,
+    current: false,
+  },
+  {
+    name: "Plan & Billing",
+    href: "/settings/plan_and_bill",
+    icon: CreditCardIcon,
+    current: true,
+  },
   { name: "Integrations", href: "#", icon: SquaresPlusIcon, current: false },
 ];
 const plans = [
@@ -55,7 +75,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Settings() {
+export default function PayAndBillSettings() {
   const [selectedPlan, setSelectedPlan] = useState(plans[1]);
   const [annualBillingEnabled, setAnnualBillingEnabled] = useState(true);
 

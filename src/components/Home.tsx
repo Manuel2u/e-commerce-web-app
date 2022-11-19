@@ -45,7 +45,7 @@ const products = [
   // More products...
 ];
 
-export default function Dashboard() {
+export default function Home() {
   const [openModal, setOpenModal] = useState(false);
   const handleClick = () => {
     setOpenModal(true);

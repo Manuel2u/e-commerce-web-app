@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { UserAuth } from "../userContext/userContext";
+import { useUserAuth } from "../userContext/userContext";
 import ErrorComponent from "./ErrorComponent";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../firebase/config";
@@ -13,7 +13,8 @@ export default function SignUp() {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
-  const { createUser } = UserAuth();
+  const { createUser, user } = useUserAuth();
+  console.log(user);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

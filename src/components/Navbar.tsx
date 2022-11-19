@@ -9,20 +9,20 @@ import {
   ShoppingBagIcon,
 } from "@heroicons/react/24/outline";
 import { Link } from "react-router-dom";
-import { UserAuth } from "../userContext/userContext";
+import { useUserAuth } from "../userContext/userContext";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
 export default function Navbar() {
-  const { user, signOutUser } = UserAuth();
+  const { user, signOutUser } = useUserAuth();
   console.log(user);
 
   const signOut = async () => {
     try {
       await signOutUser();
-      sessionStorage.removeItem("user");
+      localStorage.removeItem("accessToken");
     } catch (err) {
       console.log(err);
     }
@@ -207,7 +207,7 @@ export default function Navbar() {
                         <Menu.Item>
                           {({ active }) => (
                             <Link
-                              to="/settings"
+                              to="/settings/profile"
                               className={classNames(
                                 active ? "bg-gray-100" : "",
                                 "block px-4 py-2 text-sm text-gray-700"
